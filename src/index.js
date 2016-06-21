@@ -7,12 +7,19 @@ import './styles/main.scss';
 
 // Import dependencies like this:
 import AutoComplete from './components/auto-complete';
+import Tab from './components/tabs/tab';
+import TabPane from './components/tabs/tab-pane';
+import {libraries} from './lib/mocks';
 
 class App extends React.Component {
   render() {
     return (
       <div>
-        <AutoComplete />
+        <Tab>
+          <TabPane label="React">Content for React</TabPane>
+          <TabPane label="Angular">Content for Angulat</TabPane>
+          <TabPane label="Ember">Content for Embet</TabPane>
+        </Tab>
       </div>
     );
   }
