@@ -17,7 +17,7 @@ class App extends React.Component {
       <div>
         <Tab>
           <TabPane label="React">Content for React</TabPane>
-          <TabPane label="Angular">Content for Angulat</TabPane>
+          <TabPane label="Angular">Content for Angular</TabPane>
           <TabPane label="Ember">Content for Ember</TabPane>
         </Tab>
       </div>
