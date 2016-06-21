@@ -1,9 +1,10 @@
 import React from 'react';
 
-/**
- * 1. Placing the input
- * 2. Displaying the libraries
- * 3. Filtering the libraries
+/*
+DONE 1. display libraries on screen
+DONE 2. add filter field on top
+DONE 3. do filtering when user types something
+
  */
 
 const libraries = [
@@ -31,23 +32,30 @@ class AutoComplete extends React.Component {
       searchText: ''
     }
 
+    this.handleFilter = this.handleFilter.bind(this);
   }
+
   render() {
 
     let filteredLibraries = libraries;
 
     if (this.state.searchText) {
       const regex = new RegExp(this.state.searchText, 'i');
-      filteredLibraries = libraries.filter(library => regex.test(library.name))
+      filteredLibraries = libraries.filter(function(library) {
+        return regex.test(library.name);
+      })
     }
+
+
 
     return (
       <div className="autocomplete">
-        <input type="text" placeholder="Filter your libraries here" onChange={this.handleFilterText.bind(this)} />
+        <input type="text" placeholder="Filter libraries here" onChange={this.handleFilter} />
 
-        {this.state.searchText?
-          `Results for: ${this.state.searchText}, we found ${filteredLibraries.length} results` :
-          null
+        {
+          this.state.searchText?
+            <div>Results for: {this.state.searchText}, we found {filteredLibraries.length} results.</div>
+            : null
         }
 
         <ul>
@@ -62,12 +70,10 @@ class AutoComplete extends React.Component {
     );
   }
 
-  handleFilterText(evt) {
-
+  handleFilter(evt) {
     this.setState({
       searchText: evt.target.value
     })
-
   }
 }
 
