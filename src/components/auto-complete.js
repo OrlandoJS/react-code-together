@@ -63,7 +63,7 @@ class AutoComplete extends React.Component {
   }
 
   handleFilterText(evt) {
-
+    debugger
     this.setState({
       searchText: evt.target.value
     })
